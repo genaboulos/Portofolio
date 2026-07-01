@@ -123,13 +123,13 @@ a {
 
 .hero {
   position: relative;
-  max-width: 1180px;
+  max-width: 1280px;
   min-height: 78vh;
   margin: 0 auto;
-  padding: 90px 24px 70px;
+  padding: 108px 64px 86px;
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
-  gap: 48px;
+  gap: 64px;
   align-items: center;
 }
 
@@ -170,7 +170,7 @@ h2 {
 h1 {
   max-width: 760px;
   margin-bottom: 22px;
-  font-size: clamp(50px, 8vw, 92px);
+  font-size: clamp(50px, 7vw, 88px);
 }
 
 h2 {
@@ -292,12 +292,14 @@ h3 {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 0.85fr 1.05fr  0.9fr;
   gap: 28px;
+  align-items:stretch;
 }
 
 .about-text,
 .education-card,
+.portrait-card,
 .project-card,
 .contact-card {
   background: var(--surface);
@@ -305,6 +307,64 @@ h3 {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
+}
+
+.portrait-card {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  padding: 18px;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 247, 0.94), rgba(244, 217, 220, 0.45)),
+    var(--surface-solid);
+}
+
+.portrait-card::before {
+  content: "";
+  position: absolute;
+  inset: 32px 4px 4px 32px;
+  z-index: -1;
+  border: 1px solid rgba(184, 117, 124, 0.24);
+  border-radius: var(--radius);
+  background: rgba(246, 216, 200, 0.42);
+}
+
+.portrait-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(234, 219, 210, 0.96);
+  border-radius: var(--radius);
+  background: var(--cream);
+}
+
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 58%, rgba(47, 38, 37, 0.12)),
+    radial-gradient(circle at 25% 20%, rgba(255, 241, 222, 0.24), transparent 42%);
+  pointer-events: none;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 32%;
+  filter: saturate(0.92) contrast(1.02) brightness(1.03);
+}
+
+.portrait-card figcaption {
+  margin-top: 14px;
+  color: var(--mauve);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
 }
 
 .about-text {
@@ -586,6 +646,8 @@ footer {
 
   .hero {
     padding-top: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
@@ -632,6 +694,9 @@ footer {
     padding-right: 18px;
   }
 
+  .hero{
+    padding-top:74px;
+  }
   .hero::before {
     inset: 32px 12px 24px;
     border-radius: 18px;
